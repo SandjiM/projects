@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div>
+  <p>Наименование книги</p>
+  <p th:text="${bk.getName()}"></p>
+</div>
+
+<div>
+  <p>Автор:</p>
+  <p th:text="${bk.getAuthor()}"></p>
+</div>
+
+<div>
+  <p>Год издания</p>
+  <p th:text="${bk.getYear()}"></p>
+</div>
+
+<a th:href="@{/bk/{id}/edit(id=${bk.getBookId()})}">Редактировать</a>
+<br> <br>
+<form th:method="DELETE" th:action="@{/bk/{id}(id=${bk.getBookId()})}">
+  <input type="submit" value="Удалить"/>
+</form>
+
+<!-- Проверяем, есть ли у книги пользователь -->
+<div th:if="${person != null}">
+  <p>Читатель книги:</p>
+  <p th:text="${person}"></p>
+</div>
+
+</body>
+</html>
